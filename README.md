@@ -28,7 +28,7 @@ Other class in addition to these are not necessary to experiment only simulation
 
 ## Dependencies
 
-- Windows Visual Studio 2019
+- Windows Visual Studio 2019 / Release x64
 - GLUT / freeglut
 - GLEW
 - GLM
