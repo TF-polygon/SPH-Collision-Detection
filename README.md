@@ -40,22 +40,38 @@ hostname -I
 ```
 If you input this command in the Raspberry Pi terminal, you could get a IPv4 IP address of your raspberry pi.
 
-
 ## Demo Video
 Thie section will show you video how simulator is operated in window.
 ### SPH Simulation and Collision Detection
-This simulator was using 1.7K particles and experimental environments are Intel i3-7100U CPU and Intel(R) HD Graphics 620. Because it was not a very good experimental environment, it was difficult to expect high-performance simulation. If you run the simulation in a better experimental environment, you can expect better results. <br>
+This simulator was using 1.7K particles and experimental environments are Intel i3-7100U CPU and Intel(R) HD Graphics 620. Because it was not a very good experimental environment, it was difficult to expect high-performance simulation. If you run the simulation in a better experimental environment, you can expect better results. <br><br>
 <img src="https://github.com/TF-polygon/TF-polygon/assets/111733156/b0adfc18-f0e2-4592-9a0f-51f1fec02646" width="500" height="350">
 
 ### Raspberry Pi Terminal Status with Collision Detection and TCP/IP Socket Communication
 If the simulator detects collisions among fluid particles and collider, it sends the string data `Collision Detection`. In this demo video, the Raspberry Pi terminal is displayed in the background and output data that is printed in the terminal is the string data `Collision Detection` from simulator. Perhaps you can check that the output data is continuously printed on the terminal even thought demo video is blurry a lot. This is because data is processed in parallel in the simulation, so the form in which the data is transmitted will also be processed in parallel. So, you can see that 'Collision Detection' is output continuously rather than sequentially from the terminal.
-<br>
+<br><br>
 <img src="https://github.com/TF-polygon/SPH-Collision-Detection/assets/111733156/013f29e0-af8e-4fab-9a78-362f24c5a868" width="400" height="400">
 <br>
 Nevertheless, the speed of simulation is not delayed.
 <br>
 
-## Keyboard Control
+## Optimization
+C++ simulator sends the collision state data of each particle one by one at every moment. Therefore, communication among simulator and raspberry pi is not smooth. Also, Simulator may sends the NOT collision state even though the collider and the particle collided because simulator check collision state to all particles of fluid. Thus, I used a method to packetizing data, and in raspberryPi, a method of grouping and processing data. First, packet unit is 4 and if even 1 out of 4 collisions are detected, simulator sends the data that collision is occured. In raspberryPi that is received the datas, distinguish two values for collision detection. Collision Detection : `1`, NOT : `0`. And then, Divide the received data into 100 picese and sum all. If sum of 100 datas value is over 1, it is considered a collision. Conversely, if it is 0, it is considered that there is no collision. In the end, we could improve pace of simulation by TCP/IP socket communication and pace of data communication about raspberryPi LED processing.
+<br><br>
+<img src="https://github.com/TF-polygon/SPH-Collision-Detection/assets/111733156/704041f4-eb2b-4596-9aeb-92dd6411131e" width="500" height="350">
+<br>
+## Control
+You can control this simulation using `S`, `R`, `M` keys as follow:
+- `S` : Begin simulation
+- `R` : Fluid particles reset
+- `M` : Create a collider<br>
+
+You can move camera by mouse moving using `LB`, `RB` keys as follow:
+- Mouse `LB` : Change angle to camera
+- Mouse `RB` : Zoom In and Out 
+<br>
+
+If you create a collider, you can move the collider even if you don't click on mouse.
+
 
 
 ## Dependencies
