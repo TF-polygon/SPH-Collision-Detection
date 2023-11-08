@@ -1,10 +1,11 @@
 #include "System.h"
-
+#define PACKET_SIZE 4
 Controller* HapticSystem;
 Serial*		ser;
 float		boxWidth = 2.f;
 float		radius = 0;
 mutex		mtx;
+int packet = 0; int packetCnt = 0;
 
 uint getHash(const glm::ivec3& cell) {
 	return (
@@ -269,10 +270,17 @@ void parallelSendingSignal(const System& System, int start, int end) {
 	for (int i = start; i < end; i++) {
 		Particle* pi = System.particles[i];
 		if (pi->is_detect) {
-			System.Send_SignalOfCD("Collision");
+			packet += 1;
 		}
-		else {
-			System.Send_SignalOfCD("NOT!");
+		packetCnt++;
+		if (packetCnt >= PACKET_SIZE) {
+			if (packet >= 1) {
+				System.Send_SignalOfCD(trueData);
+			}
+			else {
+				System.Send_SignalOfCD(falseData);
+			}
+			packet = 0; packetCnt %= PACKET_SIZE;
 		}
 	}
 }
