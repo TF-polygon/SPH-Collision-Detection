@@ -38,8 +38,7 @@ Information that simulator should know in order to connect to raspberry pi for s
 ```
 hostname -I
 ```
-If you input this command in the Raspberry Pi terminal, you could get a IPv4 IP address of your raspberry pi.
-
+If you input this command in the Raspberry Pi terminal, you could get a IPv4 IP address of your raspberry pi. Among the files which are included this repository, `Server.cpp` is a TCP/IP socket file for server in raspberry Pi. So you don't have to build it in C++ simulator but in raspberry Pi using terminal. Please be sure to keep this in mind. <br>
 ## Demo Video
 Thie section will show you video how simulator is operated in window.
 ### SPH Simulation and Collision Detection
