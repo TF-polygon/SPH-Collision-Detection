@@ -1,7 +1,9 @@
 #include "Engine.h"
-// https://heinleinsgame.tistory.com/7
+#define RASPBERRY_PI_PORT 60010
+
 static Engine*		_Engine		= 0;
 static bool			_mode		= false;
+const char* RASPBERRY_PI_IP_ADDRESS = (char*)"10.106.1.80";
 
 static void display(void);
 static void idle(void);
