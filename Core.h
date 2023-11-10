@@ -33,6 +33,4 @@ using   namespace    std;
 #define PI							3.14159265f
 #define DATA_LENGTH					255
 
-#define RASPBERRY_PI_IP_ADDRESS		"10.106.3.50"
-#define RASPBERRY_PI_PORT			22
 #endif
