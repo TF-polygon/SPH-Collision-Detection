@@ -1,11 +1,14 @@
 #include "System.h"
 #define PACKET_SIZE 4
-Controller* HapticSystem;
+Controller* 	HapticSystem;
 Serial*		ser;
 float		boxWidth = 2.f;
 float		radius = 0;
 mutex		mtx;
+
 int packet = 0; int packetCnt = 0;
+char trueData[] = "1";
+char falseData[] = "0";
 
 uint getHash(const glm::ivec3& cell) {
 	return (
