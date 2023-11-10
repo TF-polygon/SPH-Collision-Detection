@@ -30,7 +30,7 @@ int main(int argc, char* argv[]) {
 		close(serverSocket);
 		return -1;
 	}
-	printf("Server is listening on port 61000...\n");
+	printf("Server is listening on port 60010...\n");
 	sockaddr_in clientAddress;
 	socklen_t clientAddrSize = sizeof(clientAddress);
 	int clientSocket = accept(serverSocket, (struct sockaddr*)&clientAddress, &clientAddrSize);
