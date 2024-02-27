@@ -1,28 +1,25 @@
 # SPH-Collision-Detection
 
-This simulation includes Smoothed Particles Hydrodynamics (SPH) with a collision detection function with specific sphere shaped object. Indeed, we are developing and researching haptic feedback for realistic content using directly created haptic devices with Arduino kits or Raspberry Pi GPIO, among others. So it may contain some class for network. 
+This system includes Smoothed Particles Hydrodynamics (SPH) with a collision detection with specific collision object. Also, there is a signal which is able to provide a feedback for the interaction among users in real-time. Total system configuration is included a computer which is able to implement SPH model and a single-board computer called raspberry pi 4 using TCP/IP protocol socket communication. I'm looking forward to use this system as basic of interaction system of virtual reality or metaverse environment.
 
 <br>
 
 ## Collision Detection
 
-First of all, it needs an object to detect any collision and create a new class named `Controller`. Most functions of the class are meant to manage the value of the collider and create a collider. Creating a collider is similar to creating a fluid particle, but I eventually found it unnecessary. (So this class contain some not valuable variables or functions). Core functions in this project are in `System.cpp`. In this file, the function `parallelForce()` is crucial for collision detection. The code that detects collisions with the collider and fluid particles is implemented in the function and processed in parallel using the thread() function. Collision Detection status is stored specific variable according to boolean in `Particle` class.  <br>
-Currently, We're developing to send datas which is stored status of collision detection for haptic feedback by haptic device when GLUT functions are looped in main function. Using either raspberryPi or Arduino.
-
-If you who were developed at past such as this project, I hope there is a helpful issues to us.
-<br><br>
+First of all, there's a class to detect any collision named 'Controller'. Most functions of the class are meant to manage the value of the collider and create a collider. Creating a collider is similar to creating a fluid particle, but I eventually found it unnecessary. (So this class contin some not valuable variables or functions). Core functions in this project are in `System.cpp`. In this file, the function `parallelForce()` is crucial for collision detection. The code that detects collisions with the collider and fluid particles is implemented in the function and processed in parallel using the thread() function. Collision Detection status is stored specific variable according to boolean in `Particle` class. 
+Currently, I completed to develope the system that is able to send datas storing status of collision detection for a interaction in real-time when GLUT functions are looped in main function.<br><br>
 
 ## C++ class
 Other class in addition to these are not necessary to experiment only simulation.
-- Camera class
-- Mesh class
-- Shader class
-- Particle class
-- RaspberryPi_NetClient class
-- Controller class
-- System class
-- Engine class
-<br><br>
+|Class|Function|Purpose|
+|------|---|---|
+|Camera|Camera|Responsible for vision of a user within the simulation|
+|Geometry|Mesh & Shader|Building a objects and surface of the objects in the simulation|
+|Particle|Particle|Initialization of 3-Dimensional particles sequence|
+|System(solver)|Building Tables & Update|Building the hash table for computation among particles and Drawing particles and parallel processing data|
+|Engine|Main|The main function of the simulation system|
+
+<br>
 
 ## Socket Communication TCP/IP
 I tried to use Arduino kit for haptic feedback by external device at first. But I changed from Arduino to Raspberry Pi because Arduino could not receive datas sending from Simulator for real-time by faster pace of C++ loop. So I succeeded to connect between Simulator in Windows Visual C++ and Raspberry Pi's terminal using `TCP/IP` socket communication. <br>
@@ -87,6 +84,4 @@ If you create a collider, you can move the collider even if you don't click on m
 - **SPH-Fluid-Simulator**,  *lijenicol* [https://github.com/lijenicol/SPH-Fluid-Simulator]<br>
 #### Papers
 - **SPH Fluids in Computer Graphics**, *State of The Art Report* <br>[https://cg.informatik.uni-freiburg.de/publications/2014_EG_SPH_STAR.pdf]
-- **FlowHaptics: Mid-Air Haptic Representation of Liquid Flow**, *MDPI applied science* [https://www.mdpi.com/2076-3417/11/18/8447]
-- **Physics-based Mesh Deformation with Haptic Feedback and Material Anisotropy**, *Avirup Mandal* et al.(2021) [https://arxiv.org/pdf/2112.04362.pdf]
   
