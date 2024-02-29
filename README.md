@@ -37,7 +37,7 @@ hostname -I
 ```
 If you input this command in the Raspberry Pi terminal, you could get a IPv4 IP address of your raspberry pi. Among the files which are included this repository, `Server.cpp` is a TCP/IP socket file for server in raspberry Pi. So you don't have to build it in C++ simulator but in raspberry Pi using terminal. Please be sure to keep this in mind. <br>
 ## Demo Video
-Thie section will show you video how simulator is operated in window.
+This section will show you video how simulator is operated in window. The experimental environment is not high performance. The CPU used in the experiment is Intel(R) Core(TM) i3-7100U and GPU is Intel(R) HD Graphics 620.
 ### SPH Simulation and Collision Detection
 This simulator was using 1.7K particles and experimental environments are Intel i3-7100U CPU and Intel(R) HD Graphics 620. Because it was not a very good experimental environment, it was difficult to expect high-performance simulation. If you run the simulation in a better experimental environment, you can expect better results. <br><br>
 <img src="https://github.com/TF-polygon/TF-polygon/assets/111733156/b0adfc18-f0e2-4592-9a0f-51f1fec02646" width="500" height="350">
