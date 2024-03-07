@@ -39,9 +39,9 @@ If you input this command in the Raspberry Pi terminal, you could get a IPv4 IP 
 ## Demo Video
 This section will show you video how simulator is operated in window. The experimental environment is not high performance. The CPU used in the experiment is Intel(R) Core(TM) i3-7100U and GPU is Intel(R) HD Graphics 620.
 ### SPH Simulation and Collision Detection
-This simulator was using 1.7K particles. Because it was not a very good experimental environment, it was difficult to expect high-performance simulation. If you run the simulation in a better experimental environment, you can expect better results. <br><br>
-<img src="https://github.com/TF-polygon/TF-polygon/assets/111733156/b0adfc18-f0e2-4592-9a0f-51f1fec02646" width="500" height="350">
-
+The number of particles that are used for experimental are 1.7K. Because it was not a very good experimental environment, it was difficult to expect high-performance simulation. If you run the simulation in a better experimental environment, you can expect better results. <br><br>
+<img src="https://github.com/TF-polygon/SPH-Collision-Detection/assets/111733156/bc47a8f4-0500-40b9-9591-33b432107415" width="500" height="350"> <br>
+This video is using increased the number of particles to show better results. About 3K.
 ### Raspberry Pi Terminal Status with Collision Detection and TCP/IP Socket Communication
 If the simulator detects collisions among fluid particles and collider, it sends the string data `Collision Detection`. In this demo video, the Raspberry Pi terminal is displayed in the background and output data that is printed in the terminal is the string data `Collision Detection` from simulator. Perhaps you can check that the output data is continuously printed on the terminal even thought demo video is blurry a lot. This is because data is processed in parallel in the simulation, so the form in which the data is transmitted will also be processed in parallel. So, you can see that 'Collision Detection' is output continuously rather than sequentially from the terminal.
 <br><br>
